@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Força Bruta</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            gap: 50px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 30px;
+        }
+
+        input {
+            font-size: 30px;
+            text-align: center;
+            padding: 10px;
+            letter-spacing: 2px;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 20px;
+            font-size: 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #numbers {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+        }
+
+        .number {
+            font-size: 44px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <label for="pass">Senha:</label>
+        <input type="text" id="pass"/>
+
+        <button onclick="force()">Force</button>
+    </div>
+
+    <div id="numbers"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
