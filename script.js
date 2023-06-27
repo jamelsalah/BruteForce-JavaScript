@@ -24,7 +24,6 @@ function force() {
     const pass = document.getElementById('pass').value;
     const passLength = pass.length;
     let trial = "";
-    let index = 0;
     
     const elements = [];
     for(let i = 0; i < passLength; i++) {
