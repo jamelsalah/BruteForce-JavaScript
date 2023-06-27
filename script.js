@@ -14,11 +14,17 @@ for (let i = 0; i <= 9; i++) {
 // Adicionando caracteres especiais
 // const specialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
 // chars.push(...specialChars.split(""));
+async function delay(ms) {
+    return new Promise((resolve) => {
+        setTimeout(() => resolve(), ms);
+    });
+}
 
 function force() {
     const pass = document.getElementById('pass').value;
     const passLength = pass.length;
     let trial = "";
+    let index = 0;
     
     const elements = [];
     for(let i = 0; i < passLength; i++) {
@@ -29,27 +35,26 @@ function force() {
         elements.push(element);
     }
 
-    function genTrial(pos) {
+    async function genTrial(pos) {
         for(let i = 0; i < chars.length; i++) {
-            trial += chars[i];
-
-            setTimeout(() => {
-                elements[pos].innerHTML = chars[i];
-            }, 500);
-
-            if(trial === pass) {
-                return trial;
-            }
-
-            if(pos < passLength - 1) {
-                const nextPos = pos + 1;
-                const result = genTrial(nextPos);
-                if(result) {
-                    return result;
+                trial += chars[i];
+                
+                elements[pos].innerHTML = chars[i]
+                await delay(1)
+                
+                if(trial === pass) {
+                    return trial;
                 }
-            }
-    
-            trial = trial.slice(0, -1);
+
+                if(pos < passLength - 1) {
+                    const nextPos = pos + 1;
+                    const result = await genTrial(nextPos);
+                    if(result) {
+                        return result;
+                    }
+                }
+        
+                trial = trial.slice(0, -1);
         }
 
         return null;
